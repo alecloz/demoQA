@@ -12,14 +12,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestDemoQA {
     @BeforeAll
-    static void precondition() {
+    static void preconditionConfiguration() {
         Configuration.pageLoadStrategy = "eager";
-        open("https://demoqa.com/automation-practice-form");
-        getWebDriver().manage().window().maximize();
+        Configuration.baseUrl = "https://demoqa.com";
     }
 
     @Test
-    void first() {
+    void testSuccessfulStudentRegistration() {
+        open("/automation-practice-form");
+        getWebDriver().manage().window().maximize();
+        adBlockAndFooterRemove();
         $("#firstName").setValue("Ivan");
         $("#lastName").setValue("Ivanov");
         $("#userEmail-wrapper #userEmail").setValue("iivanov@mail.ru");
@@ -59,4 +61,8 @@ public class TestDemoQA {
                 $x(getValueFromResultTable(String.format("%s", valueFromResultTable))).getText());
     }
 
+    void adBlockAndFooterRemove() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+    }
 }
