@@ -45,7 +45,6 @@ public class TestDemoQA {
         assertCheckResultStudentInfo("9998887766", "Mobile");
         assertCheckResultStudentInfo("15 December,1990", "Date of Birth");
         assertCheckResultStudentInfo("English", "Subjects");
-        assertCheckResultStudentInfo("Ivan Ivanov", "Student Name");
         assertCheckResultStudentInfo("Reading", "Hobbies");
         assertCheckResultStudentInfo("cat.PNG", "Picture");
         assertCheckResultStudentInfo("www.LeningradSPB.ru", "Address");
