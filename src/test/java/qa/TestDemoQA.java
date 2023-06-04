@@ -1,6 +1,7 @@
 package qa;
 
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ public class TestDemoQA {
         open("/automation-practice-form");
         getWebDriver().manage().window().maximize();
         adBlockAndFooterRemove();
-        $("#firstName").setValue("Ivan");
+        $("#firstName").val("Ivan");
         $("#lastName").setValue("Ivanov");
         $("#userEmail-wrapper #userEmail").setValue("iivanov@mail.ru");
         $x("//label[contains(text(),'Male')]").click();
@@ -31,14 +32,13 @@ public class TestDemoQA {
         $x("//select[contains(@class, 'year-select')]").selectOption("1990");
         $x("//select[contains(@class, 'month-select')]").selectOption("December");
         $x("//div[contains(text(), '15')]").click();
-        $("#subjectsInput").setValue("English").sendKeys(Keys.ENTER);
+        $("#subjectsInput").setValue("English").pressEnter();
         $x("//label[contains(text(),'Reading')]").click();
         $("#uploadPicture").uploadFromClasspath("cat.PNG");
         $("#currentAddress").setValue("www.LeningradSPB.ru");
         $x("//div[@id='state']//input").setValue("Uttar Pradesh").sendKeys(Keys.ENTER);
         $x("//div[@id='city']//input").setValue("Agra").sendKeys(Keys.ENTER);
         $("#submit").click();
-
         assertCheckResultStudentInfo("Ivan Ivanov", "Student Name");
         assertCheckResultStudentInfo("iivanov@mail.ru", "Student Email");
         assertCheckResultStudentInfo("Male", "Gender");
