@@ -2,12 +2,21 @@ package qa;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
+import static org.openqa.selenium.By.*;
 
 public class SelenideTest {
     @BeforeAll
@@ -21,18 +30,33 @@ public class SelenideTest {
         open("/selenide/selenide");
         $("#wiki-tab").click();
         $("a[href$='SoftAssertions'].internal.present").shouldHave(text("Soft assertions")).click();
-        $x("//h4[contains(text(),'Using JUnit5')]").shouldBe(visible);
-        /*
-        Ниже я сделал проверку на количество span на случай, если в блоке кода исчезнет какое-то слово или символ
-        и проверку по ключевому слову 'SoftAssertsExtension' так как оно есть только в Junit5
-        */
-        $$x("//h4[contains(text(),'Using JUnit5')]/following-sibling::div[1]//span")
-                .shouldHave(CollectionCondition.size(25));
-        $x("//h4[contains(text(),'Using JUnit5')]/following-sibling::div[1]" +
-                "//span[contains(text(),'SoftAssertsExtension')]").shouldBe(visible);
-        $$x("//h4[contains(text(),'Using JUnit5')]/following-sibling::div[2]//span")
-                .shouldHave(CollectionCondition.size(28));
-        $x("//h4[contains(text(),'Using JUnit5')]/following-sibling::div[2]" +
-                "//span[contains(text(),'SoftAssertsExtension')]").shouldBe(visible);
+        $x("//button[contains(text(),'Show 2 more pages…')]").click();
+        $x("//a[contains(text(),'SoftAssertions')]").shouldBe(visible).click();
+
+        $x("//h4[contains(text(),'Using JUnit5')]/following-sibling::div[1]/pre")
+                .shouldHave(text("@ExtendWith({SoftAssertsExtension.class})\nclass Tests {\n" +
+                        "  @Test\n" +
+                        "  void test() {\n" +
+                        "    Configuration.assertionMode = SOFT;\n" +
+                        "    open(\"page.html\");\n" +
+                        "\n" +
+                        "    $(\"#first\").should(visible).click();\n" +
+                        "    $(\"#second\").should(visible).click();\n" +
+                        "  }\n" +
+                        "}"));
+        $x("//h4[contains(text(),'Using JUnit5')]/following-sibling::div[2]/pre")
+                .shouldHave(text("class Tests {\n" +
+                        "  @RegisterExtension \n" +
+                        "  static SoftAssertsExtension softAsserts = new SoftAssertsExtension();\n" +
+                        "\n" +
+                        "  @Test\n" +
+                        "  void test() {\n" +
+                        "    Configuration.assertionMode = SOFT;\n" +
+                        "    open(\"page.html\");\n" +
+                        "\n" +
+                        "    $(\"#first\").should(visible).click();\n" +
+                        "    $(\"#second\").should(visible).click();\n" +
+                        "  }\n" +
+                        "}"));
     }
 }
