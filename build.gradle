@@ -20,5 +20,6 @@ compileTestJava{
 }
 
 test {
+    //systemProperty "chromeoptions.prefs", "intl.accept.Languages=ru"// для установки локали браузера
     useJUnitPlatform()
 }
