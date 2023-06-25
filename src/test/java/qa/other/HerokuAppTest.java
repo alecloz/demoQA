@@ -1,4 +1,4 @@
-package qa;
+package qa.other;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 
 public class HerokuAppTest {
     Logger logger = LoggerFactory.getLogger(HerokuAppTest.class);
-    static final Logger LOGGER = LoggerFactory.getLogger(HerokuAppTest.class);
     //работает исправно
     @Test
     void dragAndDropBySelenideElement() {

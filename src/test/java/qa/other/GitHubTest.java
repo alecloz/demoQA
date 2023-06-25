@@ -1,4 +1,4 @@
-package qa;
+package qa.other;
 
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.Test;

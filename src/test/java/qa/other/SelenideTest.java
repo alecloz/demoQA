@@ -1,4 +1,4 @@
-package qa;
+package qa.other;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,7 +12,7 @@ public class SelenideTest {
     @BeforeAll
     static void preconditionConfiguration() {
         Configuration.baseUrl = "https://github.com";
-        Configuration.browserSize = "1024x768";
+        Configuration.browserSize = "1920x1080";
     }
 
     @Test
