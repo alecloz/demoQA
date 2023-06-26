@@ -2,13 +2,16 @@ package qa.demo.tests;
 
 
 import org.junit.jupiter.api.Test;
+import qa.demo.pages.RegistrationPage;
 
 public class RegistrationTest extends BaseTest {
+
+    RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void testSuccessfulStudentRegistration() {
         openPage("/automation-practice-form");
-        registratinPage
+        registrationPage
                 .setFirstName("Ivan")
                 .setLastName("Ivanov")
                 .setUserEmail("iivanov@mail.ru")
@@ -23,7 +26,7 @@ public class RegistrationTest extends BaseTest {
                 .setCity("Agra")
                 .submitClick();
 
-        registratinPage
+        registrationPage
                 .assertCheckResultStudentInfo("Ivan Ivanov", "Student Name")
                 .assertCheckResultStudentInfo("iivanov@mail.ru", "Student Email")
                 .assertCheckResultStudentInfo("Male", "Gender")

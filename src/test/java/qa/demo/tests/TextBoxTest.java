@@ -1,8 +1,12 @@
 package qa.demo.tests;
 
 import org.junit.jupiter.api.Test;
+import qa.demo.pages.TextBoxPage;
 
 public class TextBoxTest extends BaseTest {
+
+    TextBoxPage textBoxPage = new TextBoxPage();
+
     @Test
     void successTest() {
         openPage("/text-box");
