@@ -1,5 +1,4 @@
-package qa;
-
+package qa.demo.tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,7 +9,8 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TestDemoQA {
+public class RegistrationTest {
+
     @BeforeAll
     static void preconditionConfiguration() {
         Configuration.pageLoadStrategy = "eager";
@@ -64,3 +64,4 @@ public class TestDemoQA {
         executeJavaScript("$('footer').remove()");
     }
 }
+
