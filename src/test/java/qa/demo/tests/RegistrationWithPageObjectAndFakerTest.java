@@ -4,38 +4,40 @@ package qa.demo.tests;
 import org.junit.jupiter.api.Test;
 import qa.demo.pages.RegistrationPage;
 
+import static qa.demo.dataForTests.RegistrationPageData.*;
+
 public class RegistrationWithPageObjectAndFakerTest extends BaseTest {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
-    void testSuccessfulStudentRegistration() {
+    public void testSuccessfulStudentRegistration() {
         openPage("/automation-practice-form");
         registrationPage
-                .setFirstName("Ivan")
-                .setLastName("Ivanov")
-                .setUserEmail("iivanov@mail.ru")
-                .setGender("Male")
-                .setUserNumber("9998887766")
-                .setBirthday("15", "December", "1990")
-                .setSubject("English")
-                .setHobby("Reading")
-                .uploadFile("cat.PNG")
-                .setCurrentAddress("www.LeningradSPB.ru")
-                .setState("Uttar Pradesh")
-                .setCity("Agra")
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setUserEmail(userEmail)
+                .setGender(gender)
+                .setUserNumber(userPhone)
+                .setBirthday(dayOfBirthday, monthOfBirthday, yearOfBirthday)
+                .setSubject(subject)
+                .setHobby(hobby)
+                .uploadFile(uploadFilePath)
+                .setCurrentAddress(currentAddress)
+                .setState(state)
+                .setCity(city)
                 .submitClick();
 
         registrationPage
-                .assertCheckResultStudentInfo("Ivan Ivanov", "Student Name")
-                .assertCheckResultStudentInfo("iivanov@mail.ru", "Student Email")
-                .assertCheckResultStudentInfo("Male", "Gender")
-                .assertCheckResultStudentInfo("9998887766", "Mobile")
-                .assertCheckResultStudentInfo("15 December,1990", "Date of Birth")
-                .assertCheckResultStudentInfo("English", "Subjects")
-                .assertCheckResultStudentInfo("Reading", "Hobbies")
-                .assertCheckResultStudentInfo("cat.PNG", "Picture")
-                .assertCheckResultStudentInfo("www.LeningradSPB.ru", "Address")
-                .assertCheckResultStudentInfo("Uttar Pradesh Agra", "State and City");
+                .assertCheckResultStudentInfo(firstName + " " + lastName, "Student Name")
+                .assertCheckResultStudentInfo(userEmail, "Student Email")
+                .assertCheckResultStudentInfo(gender, "Gender")
+                .assertCheckResultStudentInfo(userPhone, "Mobile")
+                .assertCheckResultStudentInfo(dayOfBirthday + " " + monthOfBirthday + "," + yearOfBirthday, "Date of Birth")
+                .assertCheckResultStudentInfo(subject, "Subjects")
+                .assertCheckResultStudentInfo(hobby, "Hobbies")
+                .assertCheckResultStudentInfo(uploadFilePath, "Picture")
+                .assertCheckResultStudentInfo(currentAddress, "Address")
+                .assertCheckResultStudentInfo(state + " " + city, "State and City");
     }
 }
