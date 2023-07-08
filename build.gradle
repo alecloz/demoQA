@@ -8,9 +8,10 @@ repositories {
 
 dependencies {
     implementation("org.slf4j:slf4j-simple:1.7.36")
-    testImplementation (
+    testImplementation(
             "com.codeborne:selenide:6.12.4",
-            "org.junit.jupiter:junit-jupiter:5.9.2"
+            "org.junit.jupiter:junit-jupiter:5.9.2",
+            "com.github.javafaker:javafaker:1.0.2"
     )
 
 }
@@ -18,7 +19,7 @@ dependencies {
 //tasks.withType(JavaCompile) {
 //    options.encoding = 'UTF-8'
 //}
-compileTestJava{
+compileTestJava {
     options.encoding = 'UTF-8'
 }
 

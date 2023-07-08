@@ -98,5 +98,9 @@ public class RegistrationPage {
     public void submitClick() {
         submitButton.click();
     }
-
+    public RegistrationPage adBlockAndFooterRemove() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        return this;
+    }
 }
