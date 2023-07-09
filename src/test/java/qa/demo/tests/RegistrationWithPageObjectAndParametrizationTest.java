@@ -35,6 +35,7 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
                                               String hobby, String file, String address, String state, String city) {
         openPage("/automation-practice-form");
         registrationPage
+                .adBlockAndFooterRemove()
                 .setFirstName(first_name)
                 .setLastName(last_name)
                 .setUserEmail(email)
@@ -79,6 +80,7 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
                                                 String hobby, String file, String address, String state, String city) {
         openPage("/automation-practice-form");
         registrationPage
+                .adBlockAndFooterRemove()
                 .setFirstName(first_name)
                 .setLastName(last_name)
                 .setUserEmail(email)
@@ -135,6 +137,7 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
     void testSuccessfulStudentRegistrationForAllGendersWithData(Gender gender, List<String> person) {
         openPage("/automation-practice-form");
         registrationPage
+                .adBlockAndFooterRemove()
                 .setFirstName(person.get(0))
                 .setLastName(person.get(1))
                 .setUserEmail(person.get(2))
@@ -178,6 +181,7 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
     void testSuccessfulStudentRegistrationOther(String gender) {
         openPage("/automation-practice-form");
         registrationPage
+                .adBlockAndFooterRemove()
                 .setFirstName("Ivan")
                 .setLastName("Ivanov")
                 .setUserEmail("iivanov@mail.ru")
@@ -213,9 +217,9 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
     @Disabled
     @Tag("disabled")
     void testSuccessfulStudentRegistrationDisabled() {
-        System.out.println("Disabled");
         openPage("/automation-practice-form");
         registrationPage
+                .adBlockAndFooterRemove()
                 .setFirstName("Ivan")
                 .setLastName("Ivanov")
                 .setUserEmail("iivanov@mail.ru")
