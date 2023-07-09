@@ -31,7 +31,7 @@ compileTestJava {
 
 test {
     //systemProperty "chromeoptions.prefs", "intl.accept.Languages=ru"// для установки локали браузера
-    String tags = System.getProperty("tags") != null ? System.getProperty("tags") : "smoke"
+    String tags = System.getProperty("tags") != null ? System.getProperty("tags") : "regress"
     useJUnitPlatform {
         includeTags tags
     }

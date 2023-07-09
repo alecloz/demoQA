@@ -21,7 +21,8 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
     @ParameterizedTest(name = "Testing registration for a {3} student {0} {1}")
     @Tags({
             @Tag("smoke"),
-            @Tag("regress")
+            @Tag("regress"),
+            @Tag("boys")
     })
     @CsvSource(value = {
             "Ivan | Ivanov | iivanov@mail.ru | Male | 9998887766 | 15 | December | 1990 | English | Reading | cat.PNG|" +
@@ -32,7 +33,6 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
     void testSuccessfulStudentRegistrationMan(String first_name, String last_name, String email, String gender,
                                               String phone, String day, String month, String year, String subject,
                                               String hobby, String file, String address, String state, String city) {
-        System.out.println("Man");
         openPage("/automation-practice-form");
         registrationPage
                 .setFirstName(first_name)
@@ -70,13 +70,13 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
     @ParameterizedTest(name = "Testing registration for a {3} student {0} {1}")
     @Tags({
             @Tag("smoke"),
-            @Tag("regress")
+            @Tag("regress"),
+            @Tag("girls")
     })
     @CsvFileSource(resources = "/parametrization.csv", delimiter = '|')
     void testSuccessfulStudentRegistrationWoman(String first_name, String last_name, String email, String gender,
                                                 String phone, String day, String month, String year, String subject,
                                                 String hobby, String file, String address, String state, String city) {
-        System.out.println("Woman");
         openPage("/automation-practice-form");
         registrationPage
                 .setFirstName(first_name)
@@ -127,8 +127,11 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
 
     @MethodSource
     @DisplayName("Testing registration for 3 genders")
-    @ParameterizedTest
-    @Tag("parametrization")
+    @ParameterizedTest(name = "Testing registration for {0}")
+    @Tags({
+            @Tag("regress"),
+            @Tag("parametrization")
+    })
     void testSuccessfulStudentRegistrationForAllGendersWithData(Gender gender, List<String> person) {
         openPage("/automation-practice-form");
         registrationPage
@@ -166,11 +169,13 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
      * Тест с использованием параметризации для одного аргумента
      */
     @DisplayName("Testing registration for all type of genders")
-    @ParameterizedTest
-    @Tag("regress")
+    @ParameterizedTest(name = "Testing registration for {0} gender")
+    @Tags({
+            @Tag("regress"),
+            @Tag("genders")
+    })
     @ValueSource(strings = {"Male", "Female", "Other"})
     void testSuccessfulStudentRegistrationOther(String gender) {
-        System.out.println("Other");
         openPage("/automation-practice-form");
         registrationPage
                 .setFirstName("Ivan")
