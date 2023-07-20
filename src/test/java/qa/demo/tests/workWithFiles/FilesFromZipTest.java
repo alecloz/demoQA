@@ -11,7 +11,6 @@ import qa.demo.tests.workWithFiles.model.Person;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -109,26 +108,10 @@ public class FilesFromZipTest {
             // JSON file to Java object
             Person person = mapper.readValue(new File("person.json"), Person.class);
 
+        }finally {
 
-//        try (InputStream stream = cl.getResourceAsStream("person.json")) {
-//            assert stream != null;
-//            Reader reader = new InputStreamReader(stream);
-//
-//            JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-//
-//            Assertions.assertEquals("example glossary", jsonObject.get("title").getAsString());
-//            Assertions.assertEquals("S", jsonObject.get("gloss_div")
-//                    .getAsJsonObject()
-//                    .get("title")
-//                    .getAsString());
-//
-//            Assertions.assertTrue(jsonObject.get("gloss_div")
-//                    .getAsJsonObject()
-//                    .get("flag")
-//                    .getAsBoolean());
-    //}
-
-}
+        }
+    }
 
 
     @Test
