@@ -6,23 +6,19 @@
   "country": "Россия",
   "countryCode": "RU",
   "email": "iivanov@mail.com",
-  "hobbies": [
-    "чтение",
-    "спорт",
-    "прогулки"
-  ],
-  "friends array": [
+
+  "friend": [
     {
-      "friend": 1,
-      "friend's name": "Happy the dog"
+      "id": 1,
+      "friendsName": "Happy the dog"
     },
     {
-      "friend": 2,
-      "friend's name": "Barsik the cat"
+      "id": 2,
+      "friendsName": "Barsik the cat"
     },
     {
-      "friend": 3,
-      "friend's name": "Петр Петров"
+      "id": 3,
+      "friendsName": "Петр Петров"
     }
   ]
 }

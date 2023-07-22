@@ -1,7 +1,9 @@
 package qa.demo.tests.workWithFiles;
 
 import com.codeborne.pdftest.PDF;
+import com.codeborne.selenide.commands.UploadFileFromClasspath;
 import com.codeborne.xlstest.XLS;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Assertions;
@@ -15,6 +17,7 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Arrays;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -104,11 +107,17 @@ public class FilesFromZipTest {
     @Test
     void jsonTest() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            // JSON file to Java object
-            Person person = mapper.readValue(new File("person.json"), Person.class);
+        objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
-        }finally {
+        try (InputStream stream = cl.getResourceAsStream("person.json")) {
+            assert stream != null;
+
+            // JSON file to Java object
+            Person person = objectMapper.readValue(stream, Person.class);
+            System.out.println(person.city);
+            System.out.println(person.getFriend().get(0).getId());
+            System.out.println(person.getFriend().get(0).getFriendsName());
+            //System.out.println(Arrays.toString(person.hobby));
 
         }
     }
