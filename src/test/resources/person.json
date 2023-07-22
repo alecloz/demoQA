@@ -1,0 +1,28 @@
+{
+  "date": "13.03.2003",
+  "firstname": "Иван",
+  "lastname": "Иванов",
+  "city": "Москва",
+  "country": "Россия",
+  "countryCode": "RU",
+  "email": "iivanov@mail.com",
+  "hobby": [
+    "чтение",
+    "спорт",
+    "прогулки"
+  ],
+  "friend": [
+    {
+      "id": 1,
+      "friendsName": "Happy the dog"
+    },
+    {
+      "id": 2,
+      "friendsName": "Barsik the cat"
+    },
+    {
+      "id": 3,
+      "friendsName": "Петр Петров"
+    }
+  ]
+}

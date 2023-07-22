@@ -12,6 +12,7 @@ public class RegistrationWithPageObjectTest extends BaseTest {
     void testSuccessfulStudentRegistration() {
         openPage("/automation-practice-form");
         registrationPage
+                .adBlockAndFooterRemove()
                 .setFirstName("Ivan")
                 .setLastName("Ivanov")
                 .setUserEmail("iivanov@mail.ru")
