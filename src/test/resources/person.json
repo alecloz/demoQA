@@ -6,7 +6,11 @@
   "country": "Россия",
   "countryCode": "RU",
   "email": "iivanov@mail.com",
-
+  "hobby": [
+    "чтение",
+    "спорт",
+    "прогулки"
+  ],
   "friend": [
     {
       "id": 1,
