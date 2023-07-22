@@ -1,7 +1,7 @@
 name: Test
 
-on: [push]
-#on: workflow_dispatch - для ручного запуска
+#on: [push]
+on: workflow_dispatch # - для ручного запуска
 
 jobs:
   test:
