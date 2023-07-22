@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import qa.demo.tests.workWithFiles.model.GlossaryModel;
 import qa.demo.tests.workWithFiles.model.Person;
 
 import java.io.InputStream;
@@ -17,9 +16,9 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-public class FilesFromZipTest {
+public class WorkWithFilesTest {
 
-    ClassLoader cl = FilesFromZipTest.class.getClassLoader();
+    ClassLoader cl = WorkWithFilesTest.class.getClassLoader();
     Gson gson = new Gson();
 
     @Test
@@ -100,34 +99,21 @@ public class FilesFromZipTest {
     }
 
     @Test
-    void jsonTest() throws Exception {
+    void jsonToObjectTest() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        //objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
         try (InputStream stream = cl.getResourceAsStream("person.json")) {
             assert stream != null;
 
             // JSON file to Java object
             Person person = objectMapper.readValue(stream, Person.class);
-            System.out.println(person.city);
-            System.out.println(person.getFriend().get(0).getId());
-            System.out.println(person.getFriend().get(0).getFriendsName());
-            System.out.println(person.getHobby().get(0));
-
+            Assertions.assertEquals("13.03.2003", person.getDate());
+            Assertions.assertEquals("Иван", person.getFirstname());
+            Assertions.assertEquals("Иванов", person.getLastname());
+            Assertions.assertEquals("Москва", person.getCity());
+            Assertions.assertEquals("iivanov@mail.com", person.getEmail());
+            Assertions.assertEquals("прогулки", person.getHobby().get(2));
+            Assertions.assertEquals("Barsik the cat", person.getFriend().get(1).getFriendsName());
         }
     }
-
-
-    @Test
-    void improvedJsonTest() throws Exception {
-        try (InputStream stream = cl.getResourceAsStream("glossary.json");
-             Reader reader = new InputStreamReader(stream)) {
-            GlossaryModel glossary = gson.fromJson(reader, GlossaryModel.class);
-
-            Assertions.assertEquals("example glossary", glossary.getTitle());
-            Assertions.assertEquals("S", glossary.getGlossDiv().getTitle());
-            Assertions.assertTrue(glossary.getGlossDiv().isFlag());
-        }
-    }
-
 }

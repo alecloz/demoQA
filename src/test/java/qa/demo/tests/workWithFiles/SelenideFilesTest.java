@@ -2,13 +2,13 @@ package qa.demo.tests.workWithFiles;
 
 import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import qa.demo.tests.BaseTest;
+import qa.demo.tests.workWithFiles.model.GlossaryModel;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 import static com.codeborne.selenide.Condition.text;
@@ -16,6 +16,15 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class SelenideFilesTest extends BaseTest {
+    /*
+        использовать для скачивания файла если нет href
+         static {
+                Configuration.proxyEnabled = true;
+                Configuration.fileDownload = PROXY;
+            }
+        */
+    ClassLoader cl = WorkWithFilesTest.class.getClassLoader();
+    Gson gson = new Gson();
 
     @Test
     void downloadTxtFileTest() throws Exception {
@@ -28,6 +37,11 @@ public class SelenideFilesTest extends BaseTest {
         }
     }
 
+    /* никогда не использовать uploadFile() из-за проблем с локальностью пути, либо из-за того, что будет падать
+            при загрузке из .jar. Необходимо использовать uploadFromClasspath()
+            File file = $("input[type='file']").uploadFile();
+            Корневая папка classpath - resources
+            */
     @Test
     void uploadFileTest() throws Exception {
         open("https://fineuploader.com/demos.html");
@@ -53,5 +67,17 @@ public class SelenideFilesTest extends BaseTest {
                         getRow(1)
                         .getCell(4)
                         .getStringCellValue());
+    }
+
+    @Test
+    void improvedJsonTest() throws Exception {
+        try (InputStream stream = cl.getResourceAsStream("glossary.json");
+             Reader reader = new InputStreamReader(stream)) {
+            GlossaryModel glossary = gson.fromJson(reader, GlossaryModel.class);
+
+            Assertions.assertEquals("example glossary", glossary.getTitle());
+            Assertions.assertEquals("S", glossary.getGlossDiv().getTitle());
+            Assertions.assertTrue(glossary.getGlossDiv().isFlag());
+        }
     }
 }
