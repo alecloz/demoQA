@@ -1,23 +1,18 @@
 package qa.demo.tests.workWithFiles;
 
 import com.codeborne.pdftest.PDF;
-import com.codeborne.selenide.commands.UploadFileFromClasspath;
 import com.codeborne.xlstest.XLS;
-import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import qa.demo.tests.workWithFiles.model.GlossaryModel;
 import qa.demo.tests.workWithFiles.model.Person;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.util.Arrays;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;

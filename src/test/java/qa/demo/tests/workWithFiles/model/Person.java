@@ -1,6 +1,6 @@
 package qa.demo.tests.workWithFiles.model;
 
-import java.util.*;
+import java.util.ArrayList;
 
 public class Person {
     public String date;

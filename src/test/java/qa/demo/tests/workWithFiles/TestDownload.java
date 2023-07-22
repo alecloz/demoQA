@@ -1,7 +1,6 @@
 package qa.demo.tests.workWithFiles;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import qa.demo.tests.BaseTest;
@@ -11,7 +10,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
-import static com.codeborne.selenide.FileDownloadMode.PROXY;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -36,6 +34,7 @@ public class TestDownload extends BaseTest {
             is.close();
         }
     }
+
     @Test
     void downloadFileTestWithResources() throws Exception {
         open("https://github.com/junit-team/junit5/blob/main/README.md");
@@ -46,6 +45,7 @@ public class TestDownload extends BaseTest {
             Assertions.assertTrue(content.contains("Contributions to JUnit 5 are both welcomed"));
         }
     }
+
     @Test
     void uploadFileTest() {
         open("https://fineuploader.com/demos.html");
