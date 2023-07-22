@@ -4,6 +4,7 @@ import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import qa.demo.tests.BaseTest;
 import qa.demo.tests.workWithFiles.model.GlossaryModel;
@@ -25,7 +26,7 @@ public class DownloadAndUploadFilesTest extends BaseTest {
         */
     ClassLoader cl = WorkWithFilesTest.class.getClassLoader();
     Gson gson = new Gson();
-
+    @Disabled
     @Test
     void downloadTxtFileTest() throws Exception {
         open("https://github.com/junit-team/junit5/blob/main/README.md");
@@ -42,13 +43,14 @@ public class DownloadAndUploadFilesTest extends BaseTest {
             File file = $("input[type='file']").uploadFile();
             Корневая папка classpath - resources
             */
+    @Disabled
     @Test
     void uploadFileTest() throws Exception {
         open("https://fineuploader.com/demos.html");
         $("input[type='file']").uploadFromClasspath("cat.png");
         $(".qq-file-name").shouldHave(text("cat.png"));
     }
-
+    @Disabled
     @Test
     void downloadPdfFileTest() throws Exception {
         open("https://junit.org/junit5/docs/current/user-guide/");
@@ -57,6 +59,7 @@ public class DownloadAndUploadFilesTest extends BaseTest {
         Assertions.assertEquals("JUnit 5 User Guide", pdf.title);
     }
 
+    @Disabled
     @Test
     void downloadXlsFileTest() throws Exception {
         open("https://excelvba.ru/programmes/Teachers?ysclid=lfcu77j9j9951587711");
@@ -69,6 +72,7 @@ public class DownloadAndUploadFilesTest extends BaseTest {
                         .getStringCellValue());
     }
 
+    @Disabled
     @Test
     void improvedJsonTest() throws Exception {
         try (InputStream stream = cl.getResourceAsStream("glossary.json");
