@@ -3,7 +3,6 @@ package qa.demo.tests.workWithFiles;
 import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -19,7 +18,6 @@ import java.util.zip.ZipInputStream;
 public class WorkWithFilesTest {
 
     ClassLoader cl = WorkWithFilesTest.class.getClassLoader();
-    Gson gson = new Gson();
 
     @Test
     void csvFromZipTest() throws Exception {
