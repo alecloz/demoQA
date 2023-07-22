@@ -2,6 +2,9 @@ plugins {
     id 'java-library'
 }
 
+group = 'qa.demo'
+version = '1.0-SNAPSHOT'
+
 repositories {
     mavenCentral()
 }
@@ -19,11 +22,17 @@ dependencies {
 //tasks.withType(JavaCompile) {
 //    options.encoding = 'UTF-8'
 //}
+compileJava {
+    options.encoding = 'UTF-8'
+}
 compileTestJava {
     options.encoding = 'UTF-8'
 }
 
 test {
     //systemProperty "chromeoptions.prefs", "intl.accept.Languages=ru"// для установки локали браузера
-    useJUnitPlatform()
+    String tags = System.getProperty("tags") != null ? System.getProperty("tags") : "regress"
+    useJUnitPlatform {
+        includeTags tags
+    }
 }
