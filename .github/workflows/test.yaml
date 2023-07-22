@@ -1,6 +1,7 @@
 name: Test
 
 on: [push]
+#on: workflow_dispatch - для ручного запуска
 
 jobs:
   test:
@@ -26,7 +27,7 @@ jobs:
           ref: gh-pages
           path: gh-pages
       # генерируем отчет
-      - uses: simple-elf/allure-report-action@AllureTest
+      - uses: simple-elf/allure-report-action@master
         if: always()
         with:
           gh_pages: gh-pages
