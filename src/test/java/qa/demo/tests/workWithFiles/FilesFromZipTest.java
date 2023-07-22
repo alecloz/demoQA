@@ -107,7 +107,7 @@ public class FilesFromZipTest {
     @Test
     void jsonTest() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+        //objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
         try (InputStream stream = cl.getResourceAsStream("person.json")) {
             assert stream != null;
@@ -117,7 +117,7 @@ public class FilesFromZipTest {
             System.out.println(person.city);
             System.out.println(person.getFriend().get(0).getId());
             System.out.println(person.getFriend().get(0).getFriendsName());
-            //System.out.println(Arrays.toString(person.hobby));
+            System.out.println(person.getHobby().get(0));
 
         }
     }

@@ -10,8 +10,8 @@ public class Person {
     public String country;
     public String countryCode;
     public String email;
-    //public Hobby hobby;
-    public List<Friend> friend;
+    public ArrayList<String> hobby;
+    public ArrayList<Friend> friend;
 
     public String getDate() {
         return date;
@@ -21,19 +21,19 @@ public class Person {
         this.date = date;
     }
 
-//    public Hobby getHobby() {
-//        return hobby;
-//    }
-//
-//    public void setHobby(Hobby hobby) {
-//        this.hobby = hobby;
-//    }
+    public ArrayList<String> getHobby() {
+        return hobby;
+    }
 
-    public List<Friend> getFriend() {
+    public void setHobby(ArrayList<String> hobby) {
+        this.hobby = hobby;
+    }
+
+    public ArrayList<Friend> getFriend() {
         return friend;
     }
 
-    public void setFriend(List<Friend> friend) {
+    public void setFriend(ArrayList<Friend> friend) {
         this.friend = friend;
     }
 
