@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import qa.demo.dataForTests.RegistrationPageData;
 import qa.demo.pages.RegistrationPage;
 
-public class RegistrationWithPageObjectAndFakerTest extends BaseTest {
+public class JavaFakerTest extends BaseTest {
 
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationPageData registrationPageData = new RegistrationPageData();

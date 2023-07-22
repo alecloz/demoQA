@@ -4,7 +4,7 @@ package qa.demo.tests;
 import org.junit.jupiter.api.Test;
 import qa.demo.pages.RegistrationPage;
 
-public class RegistrationWithPageObjectTest extends BaseTest {
+public class PageObjectTest extends BaseTest {
 
     RegistrationPage registrationPage = new RegistrationPage();
 

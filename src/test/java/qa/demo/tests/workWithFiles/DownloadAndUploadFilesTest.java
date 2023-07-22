@@ -15,7 +15,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class SelenideFilesTest extends BaseTest {
+public class DownloadAndUploadFilesTest extends BaseTest {
     /*
         использовать для скачивания файла если нет href
          static {

@@ -34,10 +34,14 @@ compileTestJava {
     options.encoding = 'UTF-8'
 }
 
-test {
-    //systemProperty "chromeoptions.prefs", "intl.accept.Languages=ru"// для установки локали браузера
-    String tags = System.getProperty("tags") != null ? System.getProperty("tags") : "regress"
-    useJUnitPlatform {
-        includeTags tags
-    }
-}
+// Для запуска по тэгам
+ test {
+     //systemProperty "chromeoptions.prefs", "intl.accept.Languages=ru"// для установки локали браузера
+     String tags = System.getProperty("tags") != null ? System.getProperty("tags") : "regress"
+     useJUnitPlatform {
+         includeTags tags
+     }
+ }
+//test {
+//    useJUnitPlatform()
+//}

@@ -10,7 +10,7 @@ import qa.demo.pages.RegistrationPage;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
+public class JUnit5LessonTest extends BaseTest {
 
     RegistrationPage registrationPage = new RegistrationPage();
 
@@ -32,7 +32,7 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
     }, delimiter = '|')
     void testSuccessfulStudentRegistrationMan(String first_name, String last_name, String email, String gender,
                                               String phone, String day, String month, String year, String subject,
-                                              String hobby, String file, String address, String state, String city) {
+                                              String hobby, String file, String address, String state, String city) throws InterruptedException {
         openPage("/automation-practice-form");
         registrationPage
                 .adBlockAndFooterRemove()
@@ -49,7 +49,7 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
                 .setState(state)
                 .setCity(city)
                 .submitClick();
-
+        Thread.sleep(500);
         registrationPage
                 .assertCheckResultStudentInfo(first_name + " " + last_name, "Student Name")
                 .assertCheckResultStudentInfo(email, "Student Email")
@@ -77,7 +77,7 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
     @CsvFileSource(resources = "/parametrization.csv", delimiter = '|')
     void testSuccessfulStudentRegistrationWoman(String first_name, String last_name, String email, String gender,
                                                 String phone, String day, String month, String year, String subject,
-                                                String hobby, String file, String address, String state, String city) {
+                                                String hobby, String file, String address, String state, String city) throws InterruptedException {
         openPage("/automation-practice-form");
         registrationPage
                 .adBlockAndFooterRemove()
@@ -95,6 +95,7 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
                 .setCity(city)
                 .submitClick();
 
+        Thread.sleep(500);
         registrationPage
                 .assertCheckResultStudentInfo(first_name + " " + last_name, "Student Name")
                 .assertCheckResultStudentInfo(email, "Student Email")
@@ -134,7 +135,7 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
             @Tag("regress"),
             @Tag("parametrization")
     })
-    void testSuccessfulStudentRegistrationForAllGendersWithData(Gender gender, List<String> person) {
+    void testSuccessfulStudentRegistrationForAllGendersWithData(Gender gender, List<String> person) throws InterruptedException {
         openPage("/automation-practice-form");
         registrationPage
                 .adBlockAndFooterRemove()
@@ -151,6 +152,7 @@ public class RegistrationWithPageObjectAndParametrizationTest extends BaseTest {
                 .setState(person.get(12))
                 .setCity(person.get(13))
                 .submitClick();
+        Thread.sleep(500);
 
         registrationPage
                 .assertCheckResultStudentInfo(person.get(0) + " " + person.get(1),
