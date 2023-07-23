@@ -11,6 +11,7 @@ import qa.demo.helpers.Attach;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class BaseRemoteTest {
@@ -46,6 +47,8 @@ public class BaseRemoteTest {
         Attach.pageSource();
         Attach.browserConsoleLogs();
         Attach.addVideo();
+
+        closeWebDriver();
     }
 
     public void openPage(String pageURL) {
