@@ -41,6 +41,7 @@ public class SystemPropertiesTests {
     @Test
     @Tag("property")
     void systemProperties4Test() {
+        //получаем значение браузера. По дефолту mozilla, но можем передать другой браузер через параметры дженкинса
         String browser = System.getProperty("browser", "mozilla");
 
         System.out.println(browser);
@@ -65,6 +66,7 @@ public class SystemPropertiesTests {
         // gradle hello_test -Dname=Alex Egorov
         // BUILD FAILED: Task 'Egorov' not found in root project 'demoqa-tests-19'.
 
+        //гредл делит имена передаваемых переменных по пробелам, поэтому используем кавычки
         // gradle hello_test -Dname="Alex Egorov"
         // gradle hello_test "-Dname=Alex Egorov"
         // Hello, Alex Egorov!
