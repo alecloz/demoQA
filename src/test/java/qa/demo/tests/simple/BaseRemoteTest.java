@@ -22,6 +22,7 @@ public class BaseRemoteTest {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
         Configuration.holdBrowserOpen = false;
+        //в начале урла добавляем "логин:пароль@", в конце урла добавляем "wd/hub"
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         /* enableVNC нужно для того чтобы мы видели, что происходит на экране
