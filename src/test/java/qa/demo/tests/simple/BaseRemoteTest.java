@@ -37,12 +37,12 @@ public class BaseRemoteTest {
     }
 
     @BeforeEach
-    void addListener(){
+    void addListener() {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     @AfterEach
-    void addAttachments(){
+    void addAttachments() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();

@@ -57,7 +57,5 @@ public class JavaFakerJenkinsTest extends BaseRemoteTest {
                     .assertCheckResultStudentInfo(registrationPageData.state + " "
                             + registrationPageData.city, "State and City");
         });
-
-
     }
 }
