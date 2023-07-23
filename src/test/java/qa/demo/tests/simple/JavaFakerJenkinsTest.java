@@ -1,15 +1,13 @@
 package qa.demo.tests.simple;
 
 
-
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import qa.demo.dataForTests.RegistrationPageData;
 import qa.demo.pages.RegistrationPage;
-import qa.demo.tests.BaseTest;
 
 @Tag("remote")
-public class JavaFakerJenkinsTest extends BaseTest {
+public class JavaFakerJenkinsTest extends BaseRemoteTest {
 
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationPageData registrationPageData = new RegistrationPageData();
