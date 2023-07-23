@@ -65,6 +65,19 @@ test {
     systemProperties(System.getProperties())
 }
 
+tasks.withType(Test) {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())  //разрешает получение переменных извне
+
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
 task simple_test(type: Test) {
     useJUnitPlatform{
         includeTags("simple")
@@ -74,5 +87,17 @@ task simple_test(type: Test) {
 task remote_test(type: Test) {
     useJUnitPlatform{
         includeTags("remote")
+    }
+}
+
+task property_test(type: Test) {
+    useJUnitPlatform{
+        includeTags("property")
+    }
+}
+
+task hello_test(type: Test) {
+    useJUnitPlatform{
+        includeTags("hello")
     }
 }
