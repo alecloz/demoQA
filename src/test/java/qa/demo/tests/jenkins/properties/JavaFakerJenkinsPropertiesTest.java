@@ -1,4 +1,4 @@
-package qa.demo.tests.jenkins.simple;
+package qa.demo.tests.jenkins.properties;
 
 
 import org.junit.jupiter.api.DisplayName;
@@ -6,16 +6,17 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import qa.demo.datafortests.RegistrationPageData;
 import qa.demo.pages.RegistrationPage;
+import qa.demo.tests.jenkins.simple.BaseRemoteTest;
 
 import static io.qameta.allure.Allure.step;
 
 
-public class JavaFakerJenkinsTest extends BaseRemoteTest {
+public class JavaFakerJenkinsPropertiesTest extends BaseRemoteTest {
 
     RegistrationPage registrationPage = new RegistrationPage();
     RegistrationPageData registrationPageData = new RegistrationPageData();
 
-    //@Tag("remote")
+    @Tag("remote")
     @DisplayName("Successful registration")
     @Test
     public void testSuccessfulStudentRegistration() {
