@@ -37,14 +37,17 @@ public class Attach {
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
     public static String addVideo() {
+        //формируем вложение с видео для алюра
         return "<htmls<body><video width='100%' height='100%' controls autoplay><source sre='"
                 + getVideoUrl()
                 + "' type='video/mp4'></video>‹/body></html>";
     }
 
     public static URL getVideoUrl() {
+        //при старте хрома создается уникальный sessionId. Так мы сохраняем видео с конкретной сессии.
+        //формируем ссылку на видео
         String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId() + ".mp4";
-        System.out.println(sessionId());
+        //System.out.println(sessionId());
         try {
             return new URL(videoUrl);
         } catch (MalformedURLException e) {
