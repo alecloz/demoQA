@@ -23,9 +23,9 @@ public class BaseRemoteTest {
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.holdBrowserOpen = false;
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browserVersion");
+        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
         //в начале урла добавляем "логин:пароль@", в конце урла добавляем "wd/hub"
-        Configuration.remote = System.getProperty("remote");
+        Configuration.remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub/");
 
         /* enableVNC нужно для того чтобы мы видели, что происходит на экране
                 удаленного браузера во время его работы. Без нее будет просто черный экран*/
