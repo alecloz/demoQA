@@ -42,7 +42,7 @@ public class SystemPropertiesTests {
     @Tag("property")
     void systemProperties4Test() {
         //получаем значение браузера. По дефолту mozilla, но можем передать другой браузер через параметры дженкинса
-        String browser = System.getProperty("browser", "mozilla");
+        String browser = System.getProperty("browser");
 
         System.out.println(browser);
         // gradle property_test

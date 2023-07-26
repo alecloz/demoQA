@@ -18,20 +18,14 @@ public class BaseRemoteTest {
 
     @BeforeAll
     static void preconditionConfiguration() {
-        String browser = System.getProperty("browser", "chrome");
-        String baseUrl = System.getProperty("baseUrl");
-        String browserSize = System.getProperty("browserSize", "1920x1080");
-        String remote = System.getProperty("remote");
-        String browserVersion = System.getProperty("browserVersion");
-
         Configuration.pageLoadStrategy = "eager";
-        Configuration.baseUrl = baseUrl;
-        Configuration.browserSize = browserSize;
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.holdBrowserOpen = false;
-        Configuration.browser = browser;
-        Configuration.browserVersion = browserVersion;
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion");
         //в начале урла добавляем "логин:пароль@", в конце урла добавляем "wd/hub"
-        Configuration.remote = remote;
+        Configuration.remote = System.getProperty("remote");
 
         /* enableVNC нужно для того чтобы мы видели, что происходит на экране
                 удаленного браузера во время его работы. Без нее будет просто черный экран*/
