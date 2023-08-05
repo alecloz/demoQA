@@ -37,7 +37,11 @@ dependencies {
             'com.github.javafaker:javafaker:1.0.2',
             'com.fasterxml.jackson.core:jackson-databind:2.14.2',
             'io.qameta.allure:allure-selenide:2.19.0',
-            'org.seleniumhq.selenium:selenium-java:4.10.0'
+            'org.seleniumhq.selenium:selenium-java:4.10.0',
+            // webdrivermanager нужен для подтягивания актуальной версии webDriver
+            'io.github.bonigarcia:webdrivermanager:5.2.1',
+            'org.aeonbits.owner:owner:1.0.4',
+            'org.assertj:assertj-core:3.23.1'
     )
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.0')
 }
@@ -61,20 +65,20 @@ compileTestJava {
 //     }
 // }
 
-//test{
-//    useJUnitPlatform()
-//}
-tasks.withType(Test) {
+test{
     useJUnitPlatform()
-    //убирать это строку если гоняешь локально
-    //systemProperties(System.getProperties())  //разрешает получение переменных извне
-    testLogging {
-        lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
-            exceptionFormat "short"
-        }
-    }
 }
+//tasks.withType(Test) {
+//    useJUnitPlatform()
+//    //убирать это строку если гоняешь локально
+//    systemProperties(System.getProperties())  //разрешает получение переменных извне
+//    testLogging {
+//        lifecycle {
+//            events "started", "skipped", "failed", "standard_error", "standard_out"
+//            exceptionFormat "short"
+//        }
+//    }
+//}
 
 task simple_test(type: Test) {
     useJUnitPlatform{
@@ -97,5 +101,12 @@ task property_test(type: Test) {
 task hello_test(type: Test) {
     useJUnitPlatform{
         includeTags("hello")
+    }
+}
+
+task owner_test(type: Test) {
+    //systemProperties(System.getProperties())
+    useJUnitPlatform{
+        includeTags("owner")
     }
 }
