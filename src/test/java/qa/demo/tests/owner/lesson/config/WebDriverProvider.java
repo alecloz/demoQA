@@ -1,4 +1,4 @@
-package qa.demo.tests.owner.config;
+package qa.demo.tests.owner.lesson.config;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

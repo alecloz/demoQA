@@ -1,8 +1,8 @@
-package qa.demo.tests.owner;
+package qa.demo.tests.owner.lesson;
 
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
-import qa.demo.tests.owner.config.AuthConfig;
+import qa.demo.tests.owner.lesson.config.AuthConfig;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

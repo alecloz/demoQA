@@ -38,10 +38,11 @@ dependencies {
             'com.fasterxml.jackson.core:jackson-databind:2.14.2',
             'io.qameta.allure:allure-selenide:2.19.0',
             'org.seleniumhq.selenium:selenium-java:4.10.0',
-            // webdrivermanager нужен для подтягивания актуальной версии webDriver
+            // webdrivermanager нужен для подтягивания аgradle clean owner_test --infoктуальной версии webDriver
             'io.github.bonigarcia:webdrivermanager:5.2.1',
             'org.aeonbits.owner:owner:1.0.4',
-            'org.assertj:assertj-core:3.23.1'
+            'org.assertj:assertj-core:3.23.1',
+            'org.slf4j:slf4j-simple:1.7.36'
     )
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.0')
 }
@@ -105,7 +106,9 @@ task hello_test(type: Test) {
 }
 
 task owner_test(type: Test) {
-    //systemProperties(System.getProperties())
+    //данная строка решает ошибку webdriverManager, который не может достучаться до системной папки с кэш
+    //systemProperty "wdm.cachePath", "/src/test/java/qa/demo"
+    systemProperties(System.getProperties())
     useJUnitPlatform{
         includeTags("owner")
     }

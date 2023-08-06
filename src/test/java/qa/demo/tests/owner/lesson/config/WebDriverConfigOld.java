@@ -1,6 +1,4 @@
-package qa.demo.tests.owner.config;
-
-import org.aeonbits.owner.ConfigFactory;
+package qa.demo.tests.owner.lesson.config;
 
 import java.net.MalformedURLException;
 import java.net.URL;

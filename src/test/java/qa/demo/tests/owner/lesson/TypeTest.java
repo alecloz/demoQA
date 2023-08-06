@@ -1,9 +1,9 @@
-package qa.demo.tests.owner;
+package qa.demo.tests.owner.lesson;
 
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
-import qa.demo.tests.owner.config.Browser;
-import qa.demo.tests.owner.config.TypeConfig;
+import qa.demo.tests.owner.lesson.config.Browser;
+import qa.demo.tests.owner.lesson.config.TypeConfig;
 
 
 import static org.assertj.core.api.Assertions.assertThat;

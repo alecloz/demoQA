@@ -1,4 +1,4 @@
-package qa.demo.tests.owner.config;
+package qa.demo.tests.owner.lesson.config;
 
 
 public enum Browser {

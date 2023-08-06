@@ -1,8 +1,8 @@
-package qa.demo.tests.owner;
+package qa.demo.tests.owner.lesson;
 
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
-import qa.demo.tests.owner.config.FruitsConfig;
+import qa.demo.tests.owner.lesson.config.FruitsConfig;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
